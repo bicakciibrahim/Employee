@@ -75,7 +75,7 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        $employee = Employees::findOrFail($id);
+
         $employeeTypes = EmployeeType::all();
         $tasks = Tasks::all();
         $departments = Department::all();
