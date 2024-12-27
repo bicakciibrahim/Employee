@@ -17,6 +17,7 @@
                     Şikayet Formu
                 </h2>
                 <a href="/iletisim/sikayet" class="bg-red-600 hover:bg-red-800 text-white py-3 px-6 rounded-lg font-medium text-center block transition duration-300">Şikayetinizi Bildirin</a>
+                <p class="mt-4 text-gray-600 text-sm text-center">Şikayetlerinizi buradan bize iletebilirsiniz. Sorunlarınızı hızlı bir şekilde çözmek için yardımcı olacağız.</p>
             </div>
 
             <!-- Öneri Formu -->
@@ -29,6 +30,7 @@
                     Öneri Formu
                 </h2>
                 <a href="/iletisim/oneri" class="bg-green-600 hover:bg-green-800 text-white py-3 px-6 rounded-lg font-medium text-center block transition duration-300">Önerinizi Paylaşın</a>
+                <p class="mt-4 text-gray-600 text-sm text-center">Fikirleriniz bizim için çok değerli. Bu form üzerinden öneri ve geri bildirimlerinizi bizlere iletebilirsiniz.</p>
             </div>
 
             <!-- İş Başvurusu Formu -->
@@ -41,6 +43,7 @@
                     İş Başvurusu Formu
                 </h2>
                 <a href="/iletisim/basvuru" class="bg-blue-600 hover:bg-blue-800 text-white py-3 px-6 rounded-lg font-medium text-center block transition duration-300">Başvurunuzu Yapın</a>
+                <p class="mt-4 text-gray-600 text-sm text-center">Yeni bir kariyer fırsatı için başvuruda bulunabilirsiniz. İlgili pozisyonlar ve başvuru süreci hakkında daha fazla bilgi alabilirsiniz.</p>
             </div>
 
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employees;
 use App\Models\EmployeeType;
 use App\Models\Projects;
@@ -74,31 +75,32 @@ class EmployeeController extends Controller
 
     public function create()
     {
-
+        $employee = Employees::findOrFail($id);
         $employeeTypes = EmployeeType::all();
         $tasks = Tasks::all();
+        $departments = Department::all();
 
 
-        return view('employee.create', compact('employeeTypes', 'tasks'));
+        return view('employee.create', compact('employeeTypes', 'tasks','departments'));
     }
 
 
     public function store(Request $request)
     {
-        // Form verilerini doğrulama
+
         $validated = $request->validate([
             'ad' => 'required|string|max:255',
             'soyad' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees,email',
+            'email' => 'required|email|unique:employees,email',  // Email benzersiz olmalı
             'telefon' => 'required|string|max:15',
             'ise_baslangic_tarihi' => 'required|date',
             'son_calisma_tarihi' => 'nullable|date',
             'maas' => 'required|numeric',
-            'calisan_turu_id' => 'required|exists:calisan_turleri,id',
-            'görev_id' => 'nullable|exists:tasks,id',
+            'calisan_turu_id' => 'required|exists:employee_types,id', // employee_type_id doğru ilişkilendirilmeli
+            'gorev_id' => 'nullable|exists:tasks,id',  // Görev ilişkisi
         ]);
 
-        // Yeni çalışanı kaydetme
+
         $employee = Employees::create([
             'ad' => $request->ad,
             'soyad' => $request->soyad,
@@ -107,13 +109,14 @@ class EmployeeController extends Controller
             'ise_baslangic_tarihi' => $request->ise_baslangic_tarihi,
             'son_calisma_tarihi' => $request->son_calisma_tarihi,
             'maas' => $request->maas,
-            'employee_type_id' => $request->employee_type_id,
-            'task_id' => $request->task_id,
+            'employee_type_id' => $request->calisan_turu_id,  // Veritabanındaki çalışan türü ID'si
+            'gorev_id' => $request->gorev_id,  // Veritabanındaki görev ID'si
         ]);
 
-        // Başarı mesajı ile yönlendirme
+        // Çalışan başarıyla eklendikten sonra listeye yönlendir
         return redirect()->route('employee.list')->with('success', 'Çalışan başarıyla eklendi.');
     }
+
 
 
 

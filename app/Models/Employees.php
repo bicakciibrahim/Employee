@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Employees extends Model
-{
+{   protected $table = 'calisanlar';
     use HasFactory;
 
-    protected $table = 'calisanlar';
+
 
     protected $fillable = [
         'ad',
