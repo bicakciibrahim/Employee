@@ -69,7 +69,7 @@ class EmployeeController extends Controller
             'calisan_turu_id' => $employeeTypeId ?? $employee->calisan_turu_id,
         ]);
 
-        // Mesaj veya yönlendirme
+
         return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilgileri başarıyla güncellendi.');
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
@@ -35,8 +36,7 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/calisan/ekle', [EmployeeController::class, 'create'])->name('employee.create');
-Route::post('/calisan/ekle', [EmployeeController::class, 'store'])->name('employee.store');
+
 
 
 Route::middleware(['auth'])->group(function () {
@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/calisan/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::get('calisan/{id}/düzenle', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('calisan/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+    Route::get('/calisan/ekle', [EmployeeController::class, 'create'])->name('employee.create');
+    Route::post('/calisan/ekle', [EmployeeController::class, 'store'])->name('employee.store');
 
 
 
@@ -56,18 +58,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/birimler', [DepartmentController::class, 'index'])->name('units.index');
     Route::get('/birimler/{id}', [DepartmentController::class, 'show'])->name('units.show');
 
+    Route::get('/izinler', [PermissionController::class, 'index'])->name('permissions.index');
+    Route::get('/izin/ekle', [PermissionController::class, 'create'])->name('permissions.create');
+    Route::post('/izin/ekle', [PermissionController::class, 'store'])->name('permissions.store');
 
-    Route::get('/izinler');
+
+
     Route::get('/calisanegitim');
     Route::get('/yoklama');
     Route::get('/performansdgr');
     Route::get('/maaslar');
-
-
-
-
-
-
 });
 
 
