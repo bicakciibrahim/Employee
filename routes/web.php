@@ -77,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/performans-degerlendirme/olustur', [PerformanceEvaluationController::class, 'create'])->name('performances.create');
     Route::post('/performans-degerlendirme', [PerformanceEvaluationController::class, 'store'])->name('performances.store');
-
+    Route::get('/performans-degerlendirme', [PerformanceEvaluationController::class, 'index'])->name('performances.index');
 
 
 
