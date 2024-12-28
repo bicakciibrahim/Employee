@@ -75,7 +75,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/yoklama/ekle', [RollCallController::class, 'create'])->name('rollcalls.create');
     Route::post('/yoklama', [RollCallController::class, 'store'])->name('rollcalls.store');
 
-    Route::get('/performans-degerlendirme', [PerformanceEvaluationController::class, 'index'])->name('performances.index');
+    Route::get('/performans-degerlendirme/olustur', [PerformanceEvaluationController::class, 'create'])->name('performances.create');
+    Route::post('/performans-degerlendirme', [PerformanceEvaluationController::class, 'store'])->name('performances.store');
+
+
+
 
 
 

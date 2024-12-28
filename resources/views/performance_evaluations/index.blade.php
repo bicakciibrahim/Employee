@@ -7,6 +7,13 @@
         <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
             <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Performans Değerlendirme Listesi</h2>
 
+            <!-- Ekle Butonu -->
+            <div class="mb-6 text-right">
+                <a href="{{ route('performances.create') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                    Performans Değerlendirmesi Ekle
+                </a>
+            </div>
+
             <!-- Performans Değerlendirme Listesi -->
             <table class="min-w-full table-auto border-collapse">
                 <thead>
