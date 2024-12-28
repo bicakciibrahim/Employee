@@ -12,18 +12,17 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('calisan_id');
             $table->date('tarih');
-            $table->enum('durum', ['Gelmedi', 'Geldi', 'İzinli', 'Raporlu']);
+            $table->time('giris_saati')->nullable(); // Giris saati nullable
+            $table->time('cikis_saati')->nullable(); // Cikis saati nullable
+            $table->enum('durum', ['Geldi', 'Gelmedi', 'Geç Geldi', 'İzinli'])->default('Geldi');
             $table->timestamps();
 
+            // Foreign Key
             $table->foreign('calisan_id')->references('id')->on('calisanlar')->onDelete('cascade');
         });
     }
 
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('yoklama');
     }

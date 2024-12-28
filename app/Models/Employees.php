@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employees extends Model
 {
-    protected $table = 'calisanlar';
+    protected $table = 'calisanlar';  // Tablo adı 'calisanlar' olarak belirtildi.
     use HasFactory;
-
-
 
     protected $fillable = [
         'ad',
@@ -25,48 +23,40 @@ class Employees extends Model
         'maas',
     ];
 
-
     public function employeeType()
     {
         return $this->belongsTo(EmployeeType::class, 'calisan_turu_id');
     }
-
 
     public function department()
     {
         return $this->belongsTo(Department::class, 'birim_id');
     }
 
-
     public function task()
     {
         return $this->belongsTo(Tasks::class, 'gorev_id');
     }
-
 
     public function salaries()
     {
         return $this->hasMany(Salaries::class, 'calisan_id');
     }
 
-
     public function projects()
     {
         return $this->hasMany(Projects::class, 'calisan_id');
     }
-
 
     public function trainings()
     {
         return $this->hasMany(EmployeeTraiining::class, 'calisan_id');
     }
 
-
     public function evaluations()
     {
         return $this->hasMany(PerformanceEvaluation::class, 'calisan_id');
     }
-
 
     public function permissions()
     {

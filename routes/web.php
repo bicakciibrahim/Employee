@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\EmployeeTrainingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PerformanceEvaluationController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RollCallController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
@@ -62,14 +64,21 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/izin/ekle', [PermissionController::class, 'store'])->name('permissions.store');
 
 
-    Route::resource('/calisanegitim', EmployeeTrainingController::class)->except(['show']);
-    Route::get('/calisanegitim/ekle', [EmployeeTrainingController::class, 'create'])->name('employee.trainings.create');
-    Route::post('/calisanegitim', [EmployeeTrainingController::class, 'store'])->name('employee.trainings.store');
+    Route::resource('/calisanegitim', EmployeeTrainingController::class)->names([
+        'index' => 'employee.trainings.index',
+        'create' => 'employee.trainings.create',
+        'store' => 'employee.trainings.store',
+    ]);
+
+
+    Route::get('/yoklama', [RollCallController::class, 'index'])->name('rollcalls.index');
+    Route::get('/yoklama/ekle', [RollCallController::class, 'create'])->name('rollcalls.create');
+    Route::post('/yoklama', [RollCallController::class, 'store'])->name('rollcalls.store');
+
+    Route::get('/performans-degerlendirme', [PerformanceEvaluationController::class, 'index'])->name('performances.index');
 
 
 
-    Route::get('/yoklama');
-    Route::get('/performansdgr');
     Route::get('/maaslar');
 });
 

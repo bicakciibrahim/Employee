@@ -9,23 +9,23 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
 </head>
 
-<body class="bg-gray-100 font-sans antialiased">
+<body class="bg-white font-sans antialiased text-gray-900">
 
 <!-- Navbar -->
-<nav class="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 text-white p-6 shadow-lg">
-    <div class="container mx-auto flex items-center justify-between">
-        <a href="/" class="text-3xl font-bold tracking-wide">Çalışan Yönetimi</a>
+<nav class="bg-gray-900 shadow-lg">
+    <div class="container mx-auto flex items-center justify-between p-6">
+        <a href="/" class="text-3xl font-bold text-white tracking-wide">Çalışan Yönetimi</a>
 
         <div class="flex items-center space-x-6">
             @auth
-                <a href="/dashboard" class="hover:text-red-400 transition duration-300">Profil</a>
+                <a href="/dashboard" class="hover:text-gray-300 transition duration-300">Profil</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="hover:text-red-400 transition duration-300">Çıkış</button>
+                    <button type="submit" class="hover:text-gray-300 transition duration-300">Çıkış</button>
                 </form>
             @else
-                <a href="/login" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition duration-300">Giriş</a>
-                <a href="/register" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition duration-300">Kayıt Ol</a>
+                <a href="/login" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition duration-300">Giriş</a>
+                <a href="/register" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition duration-300">Kayıt Ol</a>
             @endauth
         </div>
     </div>
@@ -37,9 +37,9 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-gray-900 text-white py-6 mt-12">
+<footer class="bg-gray-900 py-6 mt-12">
     <div class="container mx-auto text-center">
-        <p class="text-lg">&copy; 2024 Çalışan Yönetim Sistemi. Tüm hakları saklıdır.</p>
+        <p class="text-lg text-gray-300">&copy; 2024 Çalışan Yönetim Sistemi. Tüm hakları saklıdır.</p>
     </div>
 </footer>
 

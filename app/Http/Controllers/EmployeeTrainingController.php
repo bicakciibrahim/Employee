@@ -8,18 +8,18 @@ use Illuminate\Http\Request;
 
 class EmployeeTrainingController extends Controller
 {
-public function index()
-{
-$trainings = EmployeeTraiining::with(['calisan', 'egitimTuru'])->get();
-return view('employee.trainings.index', compact('trainings'));
-}
+    public function index()
+    {
+        $trainings = EmployeeTraiining::with(['calisan', 'egitimTuru'])->get();
+        return view('employee.trainings.index', compact('trainings'));
+    }
 
-public function create()
-{
-$employees = Employees::all();
-$educationTypes = TypeOfEducation::all();
-return view('employee.trainings.create', compact('employees', 'educationTypes'));
-}
+    public function create()
+    {
+        $employees = Employees::all();
+        $educationTypes = TypeOfEducation::all();
+        return view('employee.trainings.create', compact('employees', 'educationTypes'));
+    }
 
     public function store(Request $request)
     {
@@ -39,7 +39,4 @@ return view('employee.trainings.create', compact('employees', 'educationTypes'))
 
         return redirect()->route('employee.trainings.index')->with('success', 'Eğitim başarıyla eklendi.');
     }
-
-
-
 }

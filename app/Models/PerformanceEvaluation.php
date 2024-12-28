@@ -22,6 +22,6 @@ class PerformanceEvaluation extends Model
 
     public function employee()
     {
-        return $this->belongsTo(Employees::class, 'calisanlar_id');
+        return $this->belongsTo(Employees::class, 'calisan_id');
     }
 }
