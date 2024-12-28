@@ -11,7 +11,7 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        // Tüm izinleri çekiyoruz
+        // Tüm izinleri ilişkili modellerle birlikte çekiyoruz
         $permissions = Permissions::with(['employee', 'permissionType'])->get();
 
         // İzin türlerini de form için alalım
@@ -23,7 +23,7 @@ class PermissionController extends Controller
     public function create()
     {
         // Çalışanlar ve izin türlerini alıyoruz
-        $employees = Employees::all();
+        $employees = Employees::all(); // Employees yerine Calisan modelini kullanıyoruz
         $permissionTypes = PermissonType::all();
 
         return view('permissions.create', compact('employees', 'permissionTypes'));
@@ -33,7 +33,7 @@ class PermissionController extends Controller
     {
         // Verileri doğrulama
         $request->validate([
-            'calisan_id' => 'required|exists:employees,id',
+            'calisan_id' => 'required|exists:calisanlar,id', // employees yerine calisanlar tablosunu doğruluyoruz
             'izin_turu_id' => 'required|exists:izin_turleri,id',
             'baslangic_tarihi' => 'required|date',
             'bitis_tarihi' => 'required|date',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeTrainingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -35,7 +36,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/', [HomeController::class, 'home']);
-
+Route::get('/calisan/ekle', [EmployeeController::class, 'createEmployeeForm'])->name('employee.create');
+Route::post('/calisan/ekle', [EmployeeController::class, 'saveNewEmployee'])->name('employee.store');
 
 
 
@@ -44,9 +46,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/calisan/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::get('calisan/{id}/düzenle', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('calisan/{id}', [EmployeeController::class, 'update'])->name('employee.update');
-    Route::get('/calisan/ekle', [EmployeeController::class, 'create'])->name('employee.create');
-    Route::post('/calisan/ekle', [EmployeeController::class, 'store'])->name('employee.store');
-
 
 
     Route::get('/projeler', [ProjectController::class, 'index'])->name('project.index');
@@ -63,8 +62,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/izin/ekle', [PermissionController::class, 'store'])->name('permissions.store');
 
 
+    Route::resource('/calisanegitim', EmployeeTrainingController::class)->except(['show']);
+    Route::get('/calisanegitim/ekle', [EmployeeTrainingController::class, 'create'])->name('employee.trainings.create');
+    Route::post('/calisanegitim', [EmployeeTrainingController::class, 'store'])->name('employee.trainings.store');
 
-    Route::get('/calisanegitim');
+
+
     Route::get('/yoklama');
     Route::get('/performansdgr');
     Route::get('/maaslar');

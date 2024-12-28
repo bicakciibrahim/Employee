@@ -14,6 +14,7 @@ class TypeOfEducation extends Model
 
 
     protected $fillable = [
+        'id',
         'ad',
         'aciklama',
     ];
@@ -23,4 +24,6 @@ class TypeOfEducation extends Model
     {
         return $this->hasMany(EmployeeTraiining::class, 'egitim_turu_id');
     }
+
+
 }

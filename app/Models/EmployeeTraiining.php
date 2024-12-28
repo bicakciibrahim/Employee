@@ -28,4 +28,7 @@ class EmployeeTraiining extends Model
     {
         return $this->belongsTo(TypeOfEducation::class, 'egitim_turu_id');
     }
+
+
+
 }

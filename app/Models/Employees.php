@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Employees extends Model
-{   protected $table = 'calisanlar';
+{
+    protected $table = 'calisanlar';
     use HasFactory;
 
 

@@ -12,6 +12,7 @@ class Department extends Model
     // Tablonun adı
     protected $table = 'birimler';
 
+
     // Toplu atamaya (mass assignment) izin verilen alanlar
     protected $fillable = [
         'birim_adi',
