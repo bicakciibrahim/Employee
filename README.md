@@ -1,1 +1,1 @@
-school project,don't care
+okul ödevi internet programcılığı
