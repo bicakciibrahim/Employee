@@ -77,7 +77,7 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
     {
         $employeeTypes = EmployeeType::all();
         $tasks = Tasks::all();
-        $departments = Department::all(); // Birimler burada alınıyor
+        $departments = Department::all();
 
         return view('employee.create', compact('employeeTypes', 'tasks', 'departments'));
     }
@@ -86,7 +86,7 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
 // Store new employee data
     public function saveNewEmployee(Request $request)
     {
-        // Form verilerini doğrulama
+
         $validated = $request->validate([
             'ad' => 'required|string|max:255',
             'soyad' => 'required|string|max:255',

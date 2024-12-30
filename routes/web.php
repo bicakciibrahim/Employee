@@ -38,8 +38,6 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/', [HomeController::class, 'home']);
-Route::get('/calisan/ekle', [EmployeeController::class, 'createEmployeeForm'])->name('employee.create');
-Route::post('/calisan/ekle', [EmployeeController::class, 'saveNewEmployee'])->name('employee.store');
 
 
 
@@ -48,10 +46,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/calisan/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::get('calisan/{id}/düzenle', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('calisan/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+    Route::get('/calisan/ekle', [EmployeeController::class, 'createEmployeeForm'])->name('employee.create');
+    Route::post('/calisan/ekle', [EmployeeController::class, 'saveNewEmployee'])->name('employee.store');
+
 
 
     Route::get('/projeler', [ProjectController::class, 'index'])->name('project.index');
     Route::get('/proje/{id}', [ProjectController::class, 'show'])->name('project.show');
+    Route::get('/proje/{id}/düzenle', [ProjectController::class, 'edit'])->name('project.edit'); // Proje Düzenleme
+    Route::post('/proje/{id}', [ProjectController::class, 'update'])->name('project.update');
+    Route::get('/proje/ekle', [ProjectController::class, 'create'])->name('project.create');
+    Route::post('/proje/ekle', [ProjectController::class, 'store'])->name('project.store');
 
     Route::get('/gorevler', [TaskController::class, 'index'])->name('tasks.index');
     Route::get('/görev/{id}', [TaskController::class, 'show'])->name('tasks.show');

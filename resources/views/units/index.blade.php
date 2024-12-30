@@ -12,7 +12,13 @@
                     <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
                         <h2 class="text-2xl font-semibold text-gray-800">{{ $birim->birim_adi }}</h2>
                         <p class="text-lg text-gray-600 mt-2">{{ Illuminate\Support\Str::limit($birim->aciklama, 100) }}</p>
-                        <a href="{{ route('units.show', $birim->id) }}" class="text-blue-600 hover:text-blue-800 mt-4 inline-block">Birim Detayı</a>
+
+                        <!-- Yeşil Buton, Ortalanmış -->
+                        <div class="flex justify-center mt-6">
+                            <a href="{{ route('units.show', $birim->id) }}" class="py-2 px-8 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300">
+                                Birim Detayı
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -23,7 +29,7 @@
 
     <!-- Ana Sayfaya Dön Butonu -->
     <div class="flex justify-center mt-12">
-        <a href="{{ url('/') }}" class="py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300">
+        <a href="{{ url('/') }}" class="py-2 px-6 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300">
             Ana Sayfaya Dön
         </a>
     </div>
