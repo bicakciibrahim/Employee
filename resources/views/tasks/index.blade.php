@@ -7,58 +7,39 @@
         <div class="bg-white rounded-xl shadow-lg p-8">
             <h1 class="text-3xl font-semibold text-gray-800 mb-6">Tüm Görevler</h1>
 
-            <table class="min-w-full table-auto border-collapse border border-gray-300">
-                <thead>
-                <tr>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Görev Adı</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Durum</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Başlama Tarihi</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Bitirme Tarihi</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Aksiyon</th>
-                </tr>
-                </thead>
-                <tbody>
+            <!-- Kartlar ile görevler -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($tasks as $task)
                     @php
                         // Duruma göre renk belirleme
-                        $rowClass = match($task->durum) {
-                            'Tamamlandı' => 'bg-green-100 text-green-700', // Açık yeşil arka plan ve koyu yeşil yazı
-                            'Devam Ediyor' => 'bg-yellow-100 text-yellow-700', // Açık sarı arka plan ve koyu sarı yazı
-                            'Bekliyor' => 'bg-red-100 text-red-700', // Açık kırmızı arka plan ve koyu kırmızı yazı
-                            default => 'bg-gray-50 text-gray-700', // Hafif gri arka plan ve koyu gri yazı
+                        $cardClass = match($task->durum) {
+                            'Tamamlandı' => 'bg-green-50 text-green-800',
+                            'Devam Ediyor' => 'bg-yellow-50 text-yellow-800',
+                            'Bekliyor' => 'bg-red-50 text-red-800',
+                            default => 'bg-gray-50 text-gray-800',
                         };
                     @endphp
 
-                    <tr class="{{ $rowClass }} hover:bg-gray-200">
-                        <td class="border border-gray-300 px-4 py-2">
-                            {{ $task->gorev_adi }}
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2">
-                            {{ $task->durum }}
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2">
-                            {{ \Carbon\Carbon::parse($task->baslama_tarihi)->locale('tr')->isoFormat('D MMMM YYYY') }}
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2">
-                            {{ $task->bitirme_tarihi
-                                ? \Carbon\Carbon::parse($task->bitirme_tarihi)->locale('tr')->isoFormat('D MMMM YYYY')
-                                : 'Belirtilmedi' }}
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <a href="{{ route('tasks.show', $task->id) }}"
-                               class="text-blue-600 hover:text-blue-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 inline-block">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
+                    <div class="border rounded-lg p-6 {{ $cardClass }} shadow-sm hover:shadow-lg transition duration-300 transform hover:scale-105">
+                        <h3 class="text-xl font-semibold">{{ $task->gorev_adi }}</h3>
+                        <p class="text-sm mt-2">Durum: <span class="font-medium">{{ $task->durum }}</span></p>
+                        <p class="text-sm mt-2">
+                            <span class="font-medium">Başlama Tarihi:</span> {{ \Carbon\Carbon::parse($task->baslama_tarihi)->locale('tr')->isoFormat('D MMMM YYYY') }}
+                        </p>
+                        <p class="text-sm mt-2">
+                            <span class="font-medium">Bitirme Tarihi:</span> {{ $task->bitis_tarihi ? \Carbon\Carbon::parse($task->bitis_tarihi)->locale('tr')->isoFormat('D MMMM YYYY') : 'Belirtilmedi' }}
+                        </p>
+                        <div class="mt-4 text-center">
+                            <a href="{{ route('tasks.show', $task->id) }}" class="inline-block py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300">
+                                Görüntüle
                             </a>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                 @endforeach
-                </tbody>
-            </table>
+            </div>
 
             <!-- Sayfalama -->
-            <div class="mt-6">
+            <div class="mt-6 flex justify-center">
                 {{ $tasks->links() }}
             </div>
         </div>
