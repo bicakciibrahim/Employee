@@ -8,10 +8,10 @@ class TaskController extends Controller
 {
     public function index()
     {
-        // Tüm görevleri al (sayfalama ekleyebilirsiniz)
+
         $tasks = Tasks::paginate(10);
 
-        // View'e görevleri gönderiyoruz
+
         return view('tasks.index', compact('tasks'));
     }
 

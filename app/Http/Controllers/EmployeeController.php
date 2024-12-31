@@ -111,10 +111,10 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
             'maas' => $request->maas,
             'calisan_turu_id' => $request->calisan_turu_id,
             'gorev_id' => $request->gorev_id,
-            'birim_id' => $request->birim_id, // Birimi ekliyoruz
+            'birim_id' => $request->birim_id,
         ]);
 
-        // Başarıyla kaydedildikten sonra listeye yönlendiriyoruz
+
         return redirect()->route('employee.list')->with('success', 'Çalışan başarıyla eklendi.');
     }
 
