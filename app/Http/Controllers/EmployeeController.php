@@ -39,6 +39,7 @@ public function update(Request $request, $id)
 {
 $employee = Employees::findOrFail($id);
 
+
 // Doğrulama
 $validated = $request->validate([
 'ad' => 'required|string|max:255',
@@ -72,12 +73,13 @@ $employee->update([
 return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilgileri başarıyla güncellendi.');
 }
 
-// Employee creation form
+
     public function createEmployeeForm()
     {
         $employeeTypes = EmployeeType::all();
         $tasks = Tasks::all();
         $departments = Department::all();
+
 
         return view('employee.create', compact('employeeTypes', 'tasks', 'departments'));
     }
@@ -100,7 +102,7 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
             'birim_id' => 'required|exists:birimler,id', // Birim id doğrulama
         ]);
 
-        // Yeni çalışanı oluşturma
+
         $employee = Employees::create([
             'ad' => $request->ad,
             'soyad' => $request->soyad,

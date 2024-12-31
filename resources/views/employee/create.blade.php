@@ -56,8 +56,9 @@
                             <option value="" disabled selected>Birim Seçin</option> <!-- Varsayılan seçenek -->
                             @foreach ($departments as $department)
                                 <option value="{{ $department->id }}" {{ old('birim_id') == $department->id ? 'selected' : '' }}>
-                                    {{ $department->ad }}
+                                    {{ $department->birim_adi }} <!-- Kolon adını doğru şekilde kullanın -->
                                 </option>
+
                             @endforeach
                         </select>
                     </div>
@@ -69,7 +70,7 @@
                             <option value="">Görev Seçiniz</option>
                             @foreach ($tasks as $task)
                                 <option value="{{ $task->id }}" {{ old('gorev_id') == $task->id ? 'selected' : '' }}>
-                                    {{ $task->ad }}
+                                    {{ $task->gorev_adi }}
                                 </option>
                             @endforeach
                         </select>
