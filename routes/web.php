@@ -35,27 +35,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/calisan/ekle', [EmployeeController::class, 'createEmployeeForm'])->name('employee.create');
     Route::post('/calisan/ekle', [EmployeeController::class, 'saveNewEmployee'])->name('employee.store');
-});
 
-require __DIR__.'/auth.php';
-
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/', [HomeController::class, 'home']);
-
-
-
-Route::middleware(['auth'])->group(function () {
     Route::get('/calisanlar', [EmployeeController::class, 'list'])->name('employees.index');
     Route::get('/calisan/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::get('calisan/{id}/düzenle', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('calisan/{id}', [EmployeeController::class, 'update'])->name('employee.update');
 
-
-
-
     Route::get('/projeler', [ProjectController::class, 'index'])->name('project.index');
     Route::get('/proje/{id}', [ProjectController::class, 'show'])->name('project.show');
-    Route::get('/proje/{id}/düzenle', [ProjectController::class, 'edit'])->name('project.edit'); // Proje Düzenleme
+    Route::get('/proje/{id}/düzenle', [ProjectController::class, 'edit'])->name('project.edit');
     Route::post('/proje/{id}', [ProjectController::class, 'update'])->name('project.update');
     Route::get('/proje/ekle', [ProjectController::class, 'create'])->name('project.create');
     Route::post('/proje/ekle', [ProjectController::class, 'store'])->name('project.store');
@@ -85,13 +73,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/performans-degerlendirme/olustur', [PerformanceEvaluationController::class, 'create'])->name('performances.create');
     Route::post('/performans-degerlendirme', [PerformanceEvaluationController::class, 'store'])->name('performances.store');
     Route::get('/performans-degerlendirme', [PerformanceEvaluationController::class, 'index'])->name('performances.index');
-
-
-
-
-
-    Route::get('/maaslar');
 });
+
+require __DIR__.'/auth.php';
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'home']);
+
+
+
+
+
 
 
 
