@@ -29,7 +29,7 @@ class RollCallController extends Controller
     {
         // Validasyon
         $request->validate([
-            'calisan_id' => 'required|exists:employees,id',
+            'calisan_id' => 'required|exists:calisanlar,id',
             'tarih' => 'required|date',
             'giris_saati' => 'nullable|date_format:H:i',
             'cikis_saati' => 'nullable|date_format:H:i',

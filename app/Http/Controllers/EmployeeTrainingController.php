@@ -24,7 +24,7 @@ class EmployeeTrainingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'calisan_id' => 'required|exists:employees,id',
+            'calisan_id' => 'required|exists:calisanlar,id',
             'egitim_turu_id' => 'required|exists:egitim_turu,id',
             'egitim_tarihi' => 'required|date',
             'egitim_durumu' => 'required|string',
