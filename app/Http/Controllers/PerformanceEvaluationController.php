@@ -27,17 +27,17 @@ class PerformanceEvaluationController extends Controller
         return view('performance_evaluations.create', compact('employees'));
     }
 
-
+    // Performans Değerlendirmesi Kaydetme
     public function store(Request $request)
     {
-
+        // Gelen veriyi validate et
         $request->validate([
             'calisan_id' => 'required|exists:calisanlar,id',
             'puan' => 'required|integer|min:1|max:100',
             'yorum' => 'required|string',
         ]);
 
-
+        // Performans Değerlendirmesini kaydet
         PerformanceEvaluation::create([
             'calisan_id' => $request->calisan_id,
             'puan' => $request->puan,
