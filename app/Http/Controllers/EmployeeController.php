@@ -70,7 +70,7 @@ $employee->update([
 ]);
 
 
-return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilgileri başarıyla güncellendi.');
+return redirect()->route('employee.list', $id)->with('success', 'Çalışan bilgileri başarıyla güncellendi.');
 }
 
 
@@ -117,7 +117,7 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
         ]);
 
 
-        return redirect()->route('')->with('success', 'Çalışan başarıyla eklendi.');
+        return redirect()->route('employee.list')->with('success', 'Çalışan başarıyla eklendi.');
     }
 
 
