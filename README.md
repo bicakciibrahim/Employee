@@ -9,7 +9,7 @@
 
 #### 1. **Çalışan Yönetimi:**
    - Çalışan ekleme, silme ve güncelleme işlemleri yapılabilir.
-   - Çalışanların temel bilgileri (ad, soyad, pozisyon, departman, iletişim bilgileri vb.) düzenlenebilir.
+   - Çalışanların temel bilgileri (ad, soyad, pozisyon, birim, iletişim bilgileri vb.) düzenlenebilir.
    - Çalışan türlerine göre filtreleme (tam zamanlı, yarı zamanlı, sözleşmeli vb.) yapılabilir.
 
 #### 2. **Görev ve Proje Yönetimi:**
