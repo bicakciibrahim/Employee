@@ -48,8 +48,8 @@ $validated = $request->validate([
 'ise_baslangic_tarihi' => 'required|date',
 'son_calisma_tarihi' => 'nullable|date',
 'maas' => 'required|numeric',
-'gorev_id' => 'nullable|exists:gorevler,id', // Görev opsiyonel ama mevcut olmalı
-'employee_type_id' => 'nullable|exists:calisan_turleri,id', // employee_type_id nullable olarak geçiyor
+'gorev_id' => 'nullable|exists:gorevler,id',
+'employee_type_id' => 'nullable|exists:calisan_turleri,id',
 ]);
 
 
