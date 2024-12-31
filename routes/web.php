@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/logout', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/calisan/ekle', [EmployeeController::class, 'createEmployeeForm'])->name('employee.create');
+    Route::post('/calisan/ekle', [EmployeeController::class, 'saveNewEmployee'])->name('employee.store');
 });
 
 require __DIR__.'/auth.php';
@@ -46,8 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/calisan/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::get('calisan/{id}/düzenle', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('calisan/{id}', [EmployeeController::class, 'update'])->name('employee.update');
-    Route::get('/calisan/ekle', [EmployeeController::class, 'createEmployeeForm'])->name('employee.create');
-    Route::post('/calisan/ekle', [EmployeeController::class, 'saveNewEmployee'])->name('employee.store');
+
 
 
 

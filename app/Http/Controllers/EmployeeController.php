@@ -97,7 +97,7 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
             'maas' => 'required|numeric',
             'calisan_turu_id' => 'required|exists:calisan_turleri,id', // Çalışan türü id doğrulama
             'gorev_id' => 'nullable|exists:gorevler,id', // Görev ilişkisi doğrulama
-            'birim_id' => 'required|exists:departments,id', // Birim id doğrulama
+            'birim_id' => 'required|exists:birimler,id', // Birim id doğrulama
         ]);
 
         // Yeni çalışanı oluşturma
@@ -115,7 +115,7 @@ return redirect()->route('employee.show', $id)->with('success', 'Çalışan bilg
         ]);
 
 
-        return redirect()->route('employee.list')->with('success', 'Çalışan başarıyla eklendi.');
+        return redirect()->route('')->with('success', 'Çalışan başarıyla eklendi.');
     }
 
 
